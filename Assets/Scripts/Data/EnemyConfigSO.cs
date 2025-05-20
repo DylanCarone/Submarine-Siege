@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Configs/Enemy Config")]
 public class EnemyConfigSO : ScriptableObject
 {
+    public int health;
     public float minSpeed;
     public float maxSpeed;
     public int baseScore;

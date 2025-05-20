@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float speed;
 
     [SerializeField] private MoveDirection moveDirection;
-
     private Rigidbody2D rb;
+
+    public float Speed { get; private set; }
+    public int Damage { get; private set; }
 
     private void Awake()
     {
@@ -15,17 +16,23 @@ public class Bullet : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
+    public void Initialize(float speed, int damage)
+    {
+        Speed = speed;
+        Damage = damage;
+    }
+
     private void FixedUpdate()
     {
-        Vector2 moveDelta = new Vector2(0, (float)moveDirection)  * (speed * Time.fixedDeltaTime);
+        Vector2 moveDelta = new Vector2(0, (float)moveDirection)  * (Speed * Time.fixedDeltaTime);
         Vector2 newPosition = rb.position + moveDelta;
         rb.MovePosition(newPosition); 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        other.GetComponent<EnemySub>()?.DestroyEnemyByPlayer();
-        other.GetComponent<PlayerLives>()?.PlayerHit();
+        Debug.Log(other.gameObject.name);
+        other.GetComponent<IDamagable>()?.TakeDamage(Damage);
         Destroy(gameObject);
     }
 }

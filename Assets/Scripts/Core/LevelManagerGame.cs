@@ -20,9 +20,12 @@ public class LevelManagerGame : MonoBehaviour
 
     private List<EnemyBase> enemyList = new List<EnemyBase>();
 
+    private int score;
+
 
     private void Start()
     {
+        score = 0;
         StartCurrentLevel(currentLevel);
     }
 
@@ -47,9 +50,14 @@ public class LevelManagerGame : MonoBehaviour
         }
     }
 
-    void HandleEnemyDestroyed(EnemyBase enemy)
+    void HandleEnemyDestroyed(EnemyBase enemy, bool diedByPlayer)
     {
         enemyList.Remove(enemy);
+        if (diedByPlayer)
+        { 
+            int points = enemy.CalculateScore();
+            score += points;
+        }
         if (enemyList.Count == 0)
         {
             StartCoroutine(BeginNextLevel());

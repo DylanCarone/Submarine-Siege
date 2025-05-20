@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerShoot : MonoBehaviour
+public partial class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private KeyCode leftFire;
     [SerializeField] private KeyCode rightFire;

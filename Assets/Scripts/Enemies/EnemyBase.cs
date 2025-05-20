@@ -5,13 +5,14 @@ using Random = UnityEngine.Random;
 public abstract class EnemyBase : MonoBehaviour, IDamagable
 {
 
-    public event Action<EnemyBase> OnEnemyDestroyed; 
+    public event Action<EnemyBase, bool> OnEnemyDestroyed; 
     
     [SerializeField] protected EnemyConfigSO config;
 
     public float Speed { get; protected set; }
     public int Score { get; protected set; }
     public int Lane { get; protected set; }
+    public int Health { get; protected set; }
 
     protected Rigidbody2D rb;
 
@@ -27,6 +28,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         Speed = Random.Range(config.minSpeed, config.maxSpeed);
         Speed = spawnFromLeft ? Mathf.Abs(Speed) : -Mathf.Abs(Speed);
         Score = config.baseScore;
+        Health = config.health;
         Lane = lane;
     }
 
@@ -41,14 +43,20 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         return config.baseScore;
     }
 
-    public void TakeDamage()
+    public void DestroyTarget(bool diedByPlayer)
     {
-        OnEnemyDestroyed?.Invoke(this);
+        OnEnemyDestroyed?.Invoke(this, diedByPlayer);
         Destroy(gameObject);
     }
 
-    private void OnMouseDown()
+    public void TakeDamage(int damage)
     {
-        TakeDamage();
+        Health -= damage;
+        if (Health <= 0)
+        {
+            DestroyTarget(true);
+        }
     }
+
+    
 }

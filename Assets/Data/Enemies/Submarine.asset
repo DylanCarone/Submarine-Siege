@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db90383d5ee18c42926f91a4b844878, type: 3}
   m_Name: Submarine
   m_EditorClassIdentifier: 
+  health: 1
   minSpeed: 1
   maxSpeed: 3
   baseScore: 10
