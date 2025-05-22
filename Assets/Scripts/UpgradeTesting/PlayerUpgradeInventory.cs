@@ -26,8 +26,9 @@ public class PlayerUpgradeInventory : MonoBehaviour
     {
         var upgradeState = GetUpgradeState(weapon);
         upgradeState.UpgradeStat(stat);
-
-        
     }
+    
+    
+    
     
 }
