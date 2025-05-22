@@ -17,8 +17,8 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         var loadout = PlayerData.Instance.Loadout;
-        var leftUpgradeState = PlayerData.Instance.Upgrades.GetUpgradeState(loadout.LeftEquippedWeapon);
-        var rightUpgradeState = PlayerData.Instance.Upgrades.GetUpgradeState(loadout.RightEquippedWeapon);
+        var leftUpgradeState = loadout.GetLeftWeaponUpgradeData();
+        var rightUpgradeState = loadout.GetRightWeaponUpgradeData();
         leftGun.Init(leftUpgradeState);
         rightGun.Init(rightUpgradeState);
     }

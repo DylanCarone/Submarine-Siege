@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,7 +6,14 @@ public class WeaponUpgradeState
 {
     public WeaponDataSO Weapon { get; private set; }
 
+    // Keeps track of the current upgrade levels for each stat
+    // this will allow the shop ui to display the current level of each stat
+    // and the cost to upgrade each stat
     public Dictionary<WeaponStatType, int> upgradeLevels = new Dictionary<WeaponStatType, int>();
+
+    // Keeps track of the current values of each stat
+    // this will allow the weapon to pull the current value of each stat
+    // and display it in the ui
     public Dictionary<WeaponStatType, float> currentValues = new Dictionary<WeaponStatType, float>();
 
     public WeaponUpgradeState(WeaponDataSO weaponDataSo)

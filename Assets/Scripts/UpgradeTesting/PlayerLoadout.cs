@@ -16,16 +16,37 @@ public class PlayerLoadout : MonoBehaviour
     {
         SetLeftWeapon(startingLeftWeapon);
         SetRightWeapon(startingRightWeapon);
-        
     }
 
-    public void SetLeftWeapon(WeaponDataSO weapon)
+    public void SetLeftWeapon(WeaponDataSO weaponData)
     {
-        LeftEquippedWeapon = weapon;
+        if (weaponData == null)
+        {
+            LeftEquippedWeapon = null;
+            return;
+        }
+
+        LeftEquippedWeapon = weaponData;
     }
-    public void SetRightWeapon(WeaponDataSO weapon)
+    public void SetRightWeapon(WeaponDataSO weaponData)
     {
-        RightEquippedWeapon = weapon;
+        if (weaponData == null)
+        {
+            RightEquippedWeapon = null;
+            return;
+        }
+
+        RightEquippedWeapon = weaponData;
+    }
+
+    public WeaponUpgradeState GetLeftWeaponUpgradeData()
+    {
+        return PlayerData.Instance.Upgrades.GetUpgradeState(LeftEquippedWeapon);
     }
     
+    public WeaponUpgradeState GetRightWeaponUpgradeData()
+    {
+        return PlayerData.Instance.Upgrades.GetUpgradeState(RightEquippedWeapon);
+    }
+
 }

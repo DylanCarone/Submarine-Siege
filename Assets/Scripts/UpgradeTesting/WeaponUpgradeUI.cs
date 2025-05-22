@@ -31,6 +31,7 @@ public class WeaponUpgradeUI : MonoBehaviour
 
         upgrades.UpgradeWeapon(weaponToUpgrade, statToUpgrade);
         PlayerData.Instance.Stats.SpendCoins(upgradeCost);
+        
 
         // Optionally, update UI here to reflect new cost and stat values
     }

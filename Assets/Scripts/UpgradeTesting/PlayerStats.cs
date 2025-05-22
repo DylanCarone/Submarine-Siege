@@ -17,6 +17,7 @@ public class PlayerStats
         {
             MoveSpeed = config.StartingSpeed;
             MaxHealth = config.StartingHealth;
+            Coins = 100;
         }
         else
         {

@@ -14,6 +14,7 @@ public class PlayerUpgradeInventory : MonoBehaviour
         var state = currentWeaponUpgrades.Find(weapon => weapon.Weapon == weaponDataSo);
         if (state == null)
         {
+            Debug.Log("Not found creating new");
             state = new WeaponUpgradeState(weaponDataSo);
             currentWeaponUpgrades.Add(state);
         }
