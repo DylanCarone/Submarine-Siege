@@ -15,5 +15,5 @@ MonoBehaviour:
   health: 1
   minSpeed: 1
   maxSpeed: 3
-  baseScore: 10
-  speedBonusMultiplier: 5
+  baseScore: 0
+  speedBonusMultiplier: 0

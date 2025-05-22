@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2188500646286071065}
   m_Layer: 0
-  m_Name: Point (1)
+  m_Name: Point B
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -60,9 +60,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2188500646286071065}
-  - {fileID: 8149209366960749912}
   - {fileID: 76293722260303928}
+  - {fileID: 8149209366960749912}
+  - {fileID: 2188500646286071065}
   m_Father: {fileID: 207155187176642998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2794286825248354813
@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3182034486997505275}
   m_Layer: 0
-  m_Name: Point (3)
+  m_Name: Point M
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 76293722260303928}
   m_Layer: 0
-  m_Name: Point (3)
+  m_Name: Point T
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8149209366960749912}
   m_Layer: 0
-  m_Name: Point (2)
+  m_Name: Point M
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7821200966800500042}
   m_Layer: 0
-  m_Name: Point (2)
+  m_Name: Point T
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366570135210621012}
   m_Layer: 0
-  m_Name: Point (1)
+  m_Name: Point B
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -282,8 +282,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4366570135210621012}
   - {fileID: 7821200966800500042}
   - {fileID: 3182034486997505275}
+  - {fileID: 4366570135210621012}
   m_Father: {fileID: 207155187176642998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

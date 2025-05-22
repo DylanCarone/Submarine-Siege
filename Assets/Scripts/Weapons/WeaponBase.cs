@@ -3,13 +3,13 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    [SerializeField] private int maxAmmo;
     [SerializeField] private float recoverySpeed;
     
-    [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float bulletSpeed = 4f;
     [SerializeField] private int bulletDamage = 1;
 
+    private Bullet bulletPrefab;
+    private int maxAmmo;
 
     private int currentAmmo;
     private float recoveryTimer;
@@ -18,6 +18,15 @@ public abstract class WeaponBase : MonoBehaviour
 
 
     public event Action<int> OnAmmoChanged;
+
+
+    public virtual void Init(WeaponUpgradeState weaponData)
+    {
+        maxAmmo = (int)weaponData.currentValues[WeaponStatType.MaxAmmo];
+        bulletPrefab = weaponData.Weapon.bulletPrefab;
+        currentAmmo = maxAmmo;
+        OnAmmoChanged?.Invoke(currentAmmo);
+    }
 
     public void Fire(Transform firePosition)
     {

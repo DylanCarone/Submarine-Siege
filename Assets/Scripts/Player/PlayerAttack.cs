@@ -14,9 +14,16 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private WeaponBase leftGun;
     [SerializeField] private WeaponBase rightGun;
 
-    
-    
-    
+    private void Start()
+    {
+        var loadout = PlayerData.Instance.Loadout;
+        var leftUpgradeState = PlayerData.Instance.Upgrades.GetUpgradeState(loadout.LeftEquippedWeapon);
+        var rightUpgradeState = PlayerData.Instance.Upgrades.GetUpgradeState(loadout.RightEquippedWeapon);
+        leftGun.Init(leftUpgradeState);
+        rightGun.Init(rightUpgradeState);
+    }
+
+
     private void Update()
     {
         if (Input.GetKeyDown(playerInput.leftFireButton))

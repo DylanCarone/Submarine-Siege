@@ -49,3 +49,6 @@ MonoBehaviour:
   growthRate: 1.2
   spawnDelay: 1.5
   spawnConfig: {fileID: 11400000, guid: aa407c8e2db869d46a421e379faa1de1, type: 2}
+  gameLevels:
+  - {fileID: 11400000, guid: a6959059a99c2d542bde52abc860ff19, type: 2}
+  - {fileID: 11400000, guid: 9306ffc94d3d9354695aa5509f0c732d, type: 2}
