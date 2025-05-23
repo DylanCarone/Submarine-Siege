@@ -24,13 +24,11 @@ public class LevelManagerGame : MonoBehaviour
     private int currentLevel = 1;
 
     private List<EnemyBase> enemyList = new List<EnemyBase>();
-
-    private int score;
+    
 
 
     private void Start()
     {
-        score = 0;
         StartCurrentLevel(currentLevel);
     }
 
@@ -102,7 +100,6 @@ public class LevelManagerGame : MonoBehaviour
         if (diedByPlayer)
         { 
             int points = enemy.CalculateScore();
-            score += points;
             PlayerData.Instance.Stats.GainCoins(points);
         }
         if (enemyList.Count == 0)

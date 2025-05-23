@@ -13,8 +13,8 @@ public class TestPlayer : MonoBehaviour
         var upgradeStateR = loadout.GetRightWeaponUpgradeData();
         stats = PlayerData.Instance.Stats;
         
-        Debug.Log($"Equipped L: {loadout.LeftEquippedWeapon} | Ammo: {upgradeState.currentValues[WeaponStatType.MaxAmmo]}");
-        Debug.Log($"Equipped R: {loadout.RightEquippedWeapon} | Ammo: {upgradeStateR.currentValues[WeaponStatType.MaxAmmo]}");
+        //Debug.Log($"Equipped L: {loadout.LeftEquippedWeapon} | Ammo: {upgradeState.currentValues[WeaponStatType.MaxAmmo]}");
+        //Debug.Log($"Equipped R: {loadout.RightEquippedWeapon} | Ammo: {upgradeStateR.currentValues[WeaponStatType.MaxAmmo]}");
         Debug.Log($"Coins: {stats.Coins}");
     }
 

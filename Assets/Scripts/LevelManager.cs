@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private EnemySpawner spawner;
+    /*[SerializeField] private EnemySpawner spawner;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private int baseEnemies = 5;
@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(nextLevelDelay);
         StartLevel(currentLevel + 1);
-    }
+    }*/
     
     
     

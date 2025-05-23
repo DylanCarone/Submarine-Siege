@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private EnemySub enemyPrefab;
+    /*[SerializeField] private EnemySub enemyPrefab;
 
     [SerializeField] private Transform[] leftSpawnPoints;
     [SerializeField] private Transform[] rightSpawnPoints;
@@ -35,5 +35,5 @@ public class EnemySpawner : MonoBehaviour
     {
         if (level <= 1) shootChance = 0f; // Level 1: 0% chance
         shootChance = 1f - Mathf.Exp(-growthRate * (level - 1));
-    }
+    }*/
 }

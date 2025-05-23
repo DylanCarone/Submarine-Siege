@@ -9,10 +9,12 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     
     [SerializeField] protected EnemyConfigSO config;
 
-    public float Speed { get; protected set; }
-    public int Score { get; protected set; }
-    public int Lane { get; protected set; }
-    public int Health { get; protected set; }
+    protected float MovementSpeed { get; set; }
+    protected int CurrentLane { get; set; }
+    protected int Score { get; set; }
+    
+    protected int CurrentHealth { get; set; }
+    public int Health => CurrentHealth;
 
     protected Rigidbody2D rb;
 
@@ -25,19 +27,26 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     public virtual void Initialize(int lane, bool spawnFromLeft)
     {
-        Speed = Random.Range(config.minSpeed, config.maxSpeed);
-        Speed = spawnFromLeft ? Mathf.Abs(Speed) : -Mathf.Abs(Speed);
+        MovementSpeed = Random.Range(config.minSpeed, config.maxSpeed);
+        MovementSpeed = spawnFromLeft ? Mathf.Abs(MovementSpeed) : -Mathf.Abs(MovementSpeed);
+        
         Score = config.baseScore;
-        Health = config.health;
-        Lane = lane;
+        
+        CurrentHealth = config.health;
+        CurrentLane = lane;
     }
 
     protected virtual void FixedUpdate()
     {
-        Vector2 moveDelta = new Vector2(1, 0) * (Speed * Time.fixedDeltaTime);
-        rb.MovePosition(rb.position + moveDelta);
+        HandleMovement();
     }
 
+    protected virtual void HandleMovement()
+    {
+        Vector2 moveDelta = new Vector2(1, 0) * (MovementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + moveDelta);
+    }
+    
     public virtual int CalculateScore()
     {
         return config.baseScore;
@@ -46,17 +55,41 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     public void DestroyTarget(bool diedByPlayer)
     {
         OnEnemyDestroyed?.Invoke(this, diedByPlayer);
+        HandleDestruction();
+    }
+
+    protected virtual void HandleDestruction()
+    {
         Destroy(gameObject);
     }
 
     public void TakeDamage(int damage)
     {
-        Health -= damage;
-        if (Health <= 0)
+        CurrentHealth -= damage;
+        HandleDamage(damage);
+        if (CurrentHealth <= 0)
         {
             DestroyTarget(true);
         }
     }
+    // Allow subclasses to add damage effects/visuals
+    protected virtual void HandleDamage(int damageAmount)
+    {
+        // Base implementation does nothing, but subclasses can override
+    }
+    
+    // Method to register for destruction events from outside (safer than direct event subscription)
+    public void RegisterDestructionHandler(Action<EnemyBase, bool> handler)
+    {
+        OnEnemyDestroyed += handler;
+    }
+    
+    public void UnregisterDestructionHandler(Action<EnemyBase, bool> handler)
+    {
+        OnEnemyDestroyed -= handler;
+    }
+
+
 
     
 }

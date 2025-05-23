@@ -139,10 +139,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 2352531171120662707}
-  leftGunPosition: {fileID: 2754459874178119120}
-  rightGunPosition: {fileID: 3499008266929896874}
-  leftGun: {fileID: 7234953192678139245}
-  rightGun: {fileID: 6885269782399603377}
+  leftWeapon:
+    firePosition: {fileID: 2754459874178119120}
+    weapon: {fileID: 7234953192678139245}
+    fireButton: 113
+  rightWeapon:
+    firePosition: {fileID: 3499008266929896874}
+    weapon: {fileID: 6885269782399603377}
+    fireButton: 101
+  useInjectedLoadout: 0
 --- !u!1 &5434521381698501660
 GameObject:
   m_ObjectHideFlags: 0

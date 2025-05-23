@@ -28,7 +28,7 @@ public class EnemyWobbler : EnemyBase
 
     protected override void FixedUpdate()
     {
-        Vector2 moveDelta = new Vector2(1, 0) * (Speed * Time.fixedDeltaTime);
+        Vector2 moveDelta = new Vector2(1, 0) * (MovementSpeed * Time.fixedDeltaTime);
         Vector2 newPosition = rb.position + moveDelta;
 
         float sinY = sinAmplitude * Mathf.Sin((Time.time * sinFrequency) + timeOffset);
@@ -40,8 +40,8 @@ public class EnemyWobbler : EnemyBase
     public override int CalculateScore()
     {
         int baseScore = config.baseScore;
-        int laneBonus = Lane * 10;
-        int speedBonus = Mathf.RoundToInt(Mathf.Abs(Speed) * config.speedBonusMultiplier);
+        int laneBonus = CurrentLane * 10;
+        int speedBonus = Mathf.RoundToInt(Mathf.Abs(MovementSpeed) * config.speedBonusMultiplier);
         return baseScore + laneBonus + speedBonus;
     }
 }

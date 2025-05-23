@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame(PlayerLives player)
     {
-        scoreUI.Show(levelManager.Score);
+        //scoreUI.Show(levelManager.Score);
     }
 
 

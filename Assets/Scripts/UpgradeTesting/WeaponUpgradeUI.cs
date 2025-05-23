@@ -1,27 +1,64 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class WeaponUpgradeUI : MonoBehaviour
 {
-    public WeaponDataSO weaponToUpgrade;
-    public WeaponStatType statToUpgrade;
-
     
+    [SerializeField] private WeaponUpgradeUISelection weaponUISelection;
+    [SerializeField] WeaponStatType statToUpgrade;
+
+    [SerializeField] private TextMeshProUGUI costText;
+    
+    WeaponDataSO weapon;
+
+    private PlayerUpgradeInventory upgrades;
+    private WeaponUpgradeState upgradeState;
+    private int currentLevel;
+    private StatUpgradeData upgradeData;
+    private int upgradeCost;
+    
+    void Awake()
+    {
+        weapon = weaponUISelection.WeaponDataSo;
+    }
+
+    private void Start()
+    {
+        GetUpgradeData();
+
+        if (currentLevel < upgradeData.maxLevel)
+        {
+            upgradeCost = upgradeData.costPerLevel[currentLevel];
+            costText.text = $"Cost: {upgradeCost}";
+            
+        }
+        else
+        {
+            costText.text = "";
+        }
+
+    }
+
+    private void GetUpgradeData()
+    {
+        upgrades = PlayerData.Instance.Upgrades;
+        upgradeState = upgrades.GetUpgradeState(weapon);
+
+        currentLevel = upgradeState.GetUpgradeLevel(statToUpgrade);
+        upgradeData = weapon.GetUpgradeData(statToUpgrade);
+        
+    }
+
     public void UpgradeSelectedWeapon()
     {
-        var upgrades = PlayerData.Instance.Upgrades;
-        var upgradeState = upgrades.GetUpgradeState(weaponToUpgrade);
-
-        int currentLevel = upgradeState.GetUpgradeLevel(statToUpgrade);
-        var upgradeData = weaponToUpgrade.GetUpgradeData(statToUpgrade);
-
+        GetUpgradeData();
         if (currentLevel >= upgradeData.maxLevel)
         {
             Debug.Log("Stat is already at max level!");
+            costText.text = "";
             return;
         }
-
-        int upgradeCost = upgradeData.costPerLevel[currentLevel];
 
         if (PlayerData.Instance.Stats.Coins < upgradeCost)
         {
@@ -29,10 +66,15 @@ public class WeaponUpgradeUI : MonoBehaviour
             return;
         }
 
-        upgrades.UpgradeWeapon(weaponToUpgrade, statToUpgrade);
+        upgrades.UpgradeWeapon(weapon, statToUpgrade);
         PlayerData.Instance.Stats.SpendCoins(upgradeCost);
+        
+        upgradeCost = upgradeData.costPerLevel[currentLevel];
+        costText.text = $"Cost: {upgradeCost}";
         
 
         // Optionally, update UI here to reflect new cost and stat values
     }
+    
+    
 }

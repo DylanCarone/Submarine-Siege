@@ -1,20 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Represents the upgrade state of a weapon, including its current stat levels and values.
+/// This class is used to handle weapon statistics, upgrade levels, and recalculations based on upgrades.
+/// </summary>
 [System.Serializable]
 public class WeaponUpgradeState
 {
+    /// <summary>
+    /// Reference to the associated weapon data scriptable object.
+    /// Provides access to the static configuration data for the weapon.
+    /// </summary>
     public WeaponDataSO Weapon { get; private set; }
 
-    // Keeps track of the current upgrade levels for each stat
-    // this will allow the shop ui to display the current level of each stat
-    // and the cost to upgrade each stat
-    public Dictionary<WeaponStatType, int> upgradeLevels = new Dictionary<WeaponStatType, int>();
 
-    // Keeps track of the current values of each stat
-    // this will allow the weapon to pull the current value of each stat
-    // and display it in the ui
+    // Dictionary mapping each stat type to its current upgrade level
+    private Dictionary<WeaponStatType, int> upgradeLevels = new Dictionary<WeaponStatType, int>();
+
+    // Dictionary mapping each stat type to its current calculated value
     public Dictionary<WeaponStatType, float> currentValues = new Dictionary<WeaponStatType, float>();
+
 
     public WeaponUpgradeState(WeaponDataSO weaponDataSo)
     {
@@ -25,7 +31,7 @@ public class WeaponUpgradeState
         }
         Recalculate();
     }
-    
+
     public float GetBaseStatValue(WeaponStatType stat)
     {
         switch (stat)
@@ -36,6 +42,7 @@ public class WeaponUpgradeState
             default: return 0f;
         }
     }
+
 
     public void Recalculate()
     {
@@ -70,6 +77,7 @@ public class WeaponUpgradeState
     {
         return upgradeLevels.ContainsKey(stat) ? upgradeLevels[stat] : 0;
     }
+
 
     public void UpgradeStat(WeaponStatType stat)
     {
