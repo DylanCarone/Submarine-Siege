@@ -44,4 +44,9 @@ public class EnemyWobbler : EnemyBase
         int speedBonus = Mathf.RoundToInt(Mathf.Abs(MovementSpeed) * config.speedBonusMultiplier);
         return baseScore + laneBonus + speedBonus;
     }
+
+    public override int PickLane(int lane)
+    {
+        return 1;
+    }
 }

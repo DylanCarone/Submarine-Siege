@@ -4,14 +4,13 @@ using UnityEngine;
 public abstract class WeaponBase : MonoBehaviour
 {
     [SerializeField] private float recoverySpeed;
-    
     [SerializeField] private float bulletSpeed = 4f;
     [SerializeField] private int bulletDamage = 1;
 
-    private Bullet bulletPrefab;
-    private int maxAmmo;
+    protected Bullet bulletPrefab;
+    protected int maxAmmo;
 
-    private int currentAmmo;
+    protected int currentAmmo;
     private float recoveryTimer;
 
     public int CurrentAmmo => currentAmmo;
@@ -63,6 +62,18 @@ public abstract class WeaponBase : MonoBehaviour
         else
         {
             recoveryTimer = 0f;
+        }
+    }
+    
+    public void ApplyUpgrade(WeaponStatType stat, int value)
+    {
+        switch (stat)
+        {
+            case WeaponStatType.MaxAmmo:
+                maxAmmo += value;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(stat), stat, null);
         }
     }
 

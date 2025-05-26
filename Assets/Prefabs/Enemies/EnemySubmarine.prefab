@@ -49,9 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadde36dbc377bd4a8022b4943dc7cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 1e1123a3b31278e499d0eb2e9b663a4d, type: 2}
-  enemyUI: {fileID: 2875348025574063062}
-  sp: {fileID: 3850934752300267574}
+  config: {fileID: 0}
 --- !u!114 &2875348025574063062
 MonoBehaviour:
   m_ObjectHideFlags: 0

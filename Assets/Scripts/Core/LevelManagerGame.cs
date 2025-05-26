@@ -7,23 +7,30 @@ using Random = UnityEngine.Random;
 public class LevelManagerGame : MonoBehaviour
 {
     [Header("References")]
+    [Tooltip("Reference to the Enemy Spawn Manager component.")]
     [SerializeField] EnemySpawnManager enemySpawnManager;
+
+    [SerializeField] private EnemyBase enemyPrefab;
+    [SerializeField] private SelectUpgrade upgradeSelector;
 
     [Header("Settings")] 
     [SerializeField] private int baseEnemies = 5;
-
     [SerializeField] private float growthRate = 1.2f;
     [SerializeField] private float spawnDelay = 0.5f;
     [SerializeField] private EnemySpawnConfigSO spawnConfig;
 
     [Header("Level Configuration")] [SerializeField]
+    [Tooltip("Array of level data scriptable objects defining each level's enemy composition")]
     private LevelDataSO[] gameLevels;
     
     
-    
+    /// The current level number the player is on
     private int currentLevel = 1;
 
+    /// List of all enemies currently on the map. Used to track when all enemies have been destroyed.
     private List<EnemyBase> enemyList = new List<EnemyBase>();
+    
+    
     
 
 
@@ -32,6 +39,11 @@ public class LevelManagerGame : MonoBehaviour
         StartCurrentLevel(currentLevel);
     }
 
+    /// <summary>
+    /// Starts the specified level by initializing enemies and configuring the level parameters.
+    /// </summary>
+    /// <param name="level">The number of the level to start.
+    /// This value should correspond to an index within the game levels array.</param>
     void StartCurrentLevel(int level)
     {
         currentLevel = level;
@@ -56,11 +68,19 @@ public class LevelManagerGame : MonoBehaviour
     //         yield return new WaitForSeconds(spawnDelay);
     //     }
     // }
-    
+
+
+    /// <summary>
+    /// Spawns enemies for the current level based on the provided level data.
+    /// Each enemy type and count is defined in the level data. Enemies are added to the spawn queue, shuffled,
+    /// and spawned at a random position, either from the left or right side.
+    /// </summary>
+    /// <param name="levelData">The data object containing enemy types and counts for the current level.</param>
+    /// <returns>An IEnumerator allowing the spawning process to be executed over time using a coroutine.</returns>
     IEnumerator SpawnEnemies(LevelDataSO levelData)
     {
         // create a new list of enemies that will be spawned from the data
-        List<EnemyBase> enemiesToSpawn = new List<EnemyBase>();
+        List<EnemyConfigSO> enemiesToSpawn = new List<EnemyConfigSO>();
         
         // clear the current list
         enemyList.Clear();
@@ -83,10 +103,10 @@ public class LevelManagerGame : MonoBehaviour
         }
         
         // loop through each one and set them up for spawning
-        foreach (var enemyPrefab in enemiesToSpawn)
+        foreach (var enemyData in enemiesToSpawn)
         {
             bool spawnFromLeft = Random.value >= 0.5f;
-            var enemyToSpawn = enemySpawnManager.SpawnEnemy(spawnFromLeft, enemyPrefab);
+            var enemyToSpawn = enemySpawnManager.SpawnEnemy(spawnFromLeft, enemyPrefab, enemyData);
             enemyList.Add(enemyToSpawn);
             enemyToSpawn.OnEnemyDestroyed += HandleEnemyDestroyed;
             yield return new WaitForSeconds(spawnDelay);
@@ -94,6 +114,12 @@ public class LevelManagerGame : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// Handles the logic for when an enemy is destroyed, including player rewards and level progression.
+    /// </summary>
+    /// <param name="enemy">The enemy instance that was destroyed.</param>
+    /// <param name="diedByPlayer">Indicates whether the player destroyed the enemy.</param>
     void HandleEnemyDestroyed(EnemyBase enemy, bool diedByPlayer)
     {
         enemyList.Remove(enemy);
@@ -104,7 +130,12 @@ public class LevelManagerGame : MonoBehaviour
         }
         if (enemyList.Count == 0)
         {
-            StartCoroutine(BeginNextLevel());
+            // go to the pick upgrade menu
+            OnRoundEnd();
+            // after the player picker the upgrade
+            // begin the next level
+                        
+            //StartCoroutine(BeginNextLevel());
         }
     }
 
@@ -147,5 +178,13 @@ public class LevelManagerGame : MonoBehaviour
         return weights.Length - 1;
     }
 
+
+    void OnRoundEnd()
+    {
+        upgradeSelector.PresentUpgradeOptions(() =>
+        {
+            StartCoroutine(BeginNextLevel());
+        });
+    }
 
 }

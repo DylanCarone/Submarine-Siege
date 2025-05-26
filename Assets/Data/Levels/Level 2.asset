@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   enemyTypes:
+  - enemyToSpawn: {fileID: 1491207260039044720, guid: 481451b603aac3942a8551ff5d73a3ce, type: 3}
+    count: 4
   - enemyToSpawn: {fileID: 1491207260039044720, guid: 8f33421053ee52b49ad05af1ed0391d9, type: 3}
-    count: 1
-  - enemyToSpawn: {fileID: 1814864527960150278, guid: 9c6590e28250aba41a571fc569100152, type: 3}
-    count: 5
+    count: 4

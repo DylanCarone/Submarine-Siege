@@ -26,5 +26,6 @@ public class PlayerMove : MonoBehaviour
         newPosition.x = Mathf.Clamp(newPosition.x, -clampDistance, clampDistance);
         
         rb.MovePosition(newPosition);
+
     }
 }

@@ -16,22 +16,33 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
 
     [Header("Weapons")] 
-    /// <summary>
-    /// The left weapon slot containing weapon, fire position, and input key.
-    /// </summary>
+
+    [Tooltip("The left weapon slot containing weapon, fire position, and input key.")]
     [SerializeField] private WeaponSlot leftWeapon = new WeaponSlot();
+    
+    [Tooltip("The right weapon slot containing weapon, fire position, and input key.")]
     [SerializeField] private WeaponSlot rightWeapon = new WeaponSlot();
 
+    [Tooltip("Flag to determine whether to use an externally injected loadout instead of the default one.")]
     [SerializeField] private bool useInjectedLoadout = false;
+    
+    // The player's current weapon loadout configuration
     private PlayerLoadout loadout;
 
+    // Event triggered when a weapon is fired, providing the weapon instance and its transform
     public event Action<WeaponBase, Transform> OnWeaponFired;
     
     private void Start()
     {
-        SetLoadout(PlayerData.Instance.Loadout);
+        //SetLoadout(PlayerData.Instance.Loadout);
     }
 
+    
+    /// <summary>
+    /// Sets a new loadout for the player
+    /// Initialized weapons based on the new loadout if it's valid
+    /// </summary>
+    /// <param name="playerLoadout"></param>
     public void SetLoadout(PlayerLoadout playerLoadout)
     {
         loadout = playerLoadout;
@@ -41,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    
     private void InitializeWeapons()
     {
         try

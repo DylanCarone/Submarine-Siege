@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db90383d5ee18c42926f91a4b844878, type: 3}
   m_Name: Submarine
   m_EditorClassIdentifier: 
+  enemyName: Sub
   health: 1
   minSpeed: 1
-  maxSpeed: 3
-  baseScore: 0
-  speedBonusMultiplier: 0
+  maxSpeed: 2
+  baseScore: 10
+  speedBonusMultiplier: 5
+  enemySprite: {fileID: 21300000, guid: 92081901d1236404c9ac7a296895a569, type: 3}
+  behaviorType: 0
+  canShoot: 0
+  fireRate: 2
+  bulletDamage: 1
+  bulletSpeed: 5
+  preferredLane: -1

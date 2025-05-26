@@ -30,6 +30,6 @@ public class LevelDataSO : ScriptableObject
 [Serializable]
 public class EnemyTypeCount
 {
-    public EnemyBase enemyToSpawn;
+    public EnemyConfigSO enemyToSpawn;
     public int count;
 }
