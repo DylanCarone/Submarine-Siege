@@ -181,10 +181,20 @@ public class LevelManagerGame : MonoBehaviour
 
     void OnRoundEnd()
     {
-        upgradeSelector.PresentUpgradeOptions(() =>
-        {
+        // if (upgradeSelector != null)
+        // {
+        //     upgradeSelector.PresentUpgradeOptions(() =>
+        //     {
+        //         StartCoroutine(BeginNextLevel());
+        //     });
+        // }
+        // else
+        // {
+        //     Debug.LogError("upgradeSelector is not assigned in the Inspector!");
+        //     // Fallback behavior to prevent game from getting stuck
+        // }
             StartCoroutine(BeginNextLevel());
-        });
     }
+
 
 }

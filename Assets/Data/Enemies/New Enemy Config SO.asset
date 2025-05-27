@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8db90383d5ee18c42926f91a4b844878, type: 3}
-  m_Name: BlueSub
+  m_Name: New Enemy Config SO
   m_EditorClassIdentifier: 
-  enemyName: Blue Submarine
-  health: 2
-  minSpeed: 2
+  enemyName: Enemy
+  health: 1
+  minSpeed: 1
   maxSpeed: 3
   baseScore: 10
   speedBonusMultiplier: 5
-  enemySprite: {fileID: 301915678268238879, guid: 236037e6c216cf443baf457e007f3c85, type: 3}
-  enemySpriteColor: {r: 0, g: 0.22749758, b: 1, a: 1}
+  enemySprite: {fileID: 0}
+  enemySpriteColor: {r: 1, g: 1, b: 1, a: 1}
   behaviorType: 0
   canShoot: 0
   fireRate: 2

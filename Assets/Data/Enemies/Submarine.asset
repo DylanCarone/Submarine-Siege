@@ -19,6 +19,7 @@ MonoBehaviour:
   baseScore: 10
   speedBonusMultiplier: 5
   enemySprite: {fileID: 21300000, guid: 92081901d1236404c9ac7a296895a569, type: 3}
+  enemySpriteColor: {r: 1, g: 1, b: 1, a: 1}
   behaviorType: 0
   canShoot: 0
   fireRate: 2

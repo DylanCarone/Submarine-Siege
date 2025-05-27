@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gun
   m_EditorClassIdentifier: 
   weaponName: Gun
-  baseMaxAmmo: 2
+  baseMaxAmmo: 5
   maxAmmoUpgrade:
     maxLevel: 3
     costPerLevel: 050000000f0000001e000000

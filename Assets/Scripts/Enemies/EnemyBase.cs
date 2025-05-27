@@ -70,6 +70,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         if (config.enemySprite && sp)
         {
             sp.sprite = config.enemySprite;
+            sp.color = config.enemySpriteColor;
         }
 
         if (sp)
@@ -87,16 +88,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         // Set up movement behavior based on config type
         switch (config.behaviorType)
         {
-            case EnemyBehaviorType.Wobbler:
-                //movementBehavior = new WobblyMovement(config.wobbleAmplitude, config.wobbleFrequency, baseY);
-                break;
-            case EnemyBehaviorType.StopAndShoot:
-                //movementBehavior = new StopAndShootMovement(MovementSpeed, config.fireRate, config.stopDuration);
-                if (config.canShoot)
-                {
-                    //shootingBehavior = new BasicShooting(config.bulletDamage, config.bulletSpeed);
-                }
-                break;
             case EnemyBehaviorType.Basic:
             default:
                 movementBehavior = new StraightMovement();

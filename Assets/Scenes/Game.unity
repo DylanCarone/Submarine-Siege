@@ -172,6 +172,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1491207260039044720, guid: 8f33421053ee52b49ad05af1ed0391d9, type: 3}
     - target: {fileID: 4114515048702934897, guid: dd1d7d9a7c3d5e54ebf3070eadda33b2, type: 3}
+      propertyPath: upgradeSelector
+      value: 
+      objectReference: {fileID: 1525280008}
+    - target: {fileID: 4114515048702934897, guid: dd1d7d9a7c3d5e54ebf3070eadda33b2, type: 3}
       propertyPath: enemySpawnManager
       value: 
       objectReference: {fileID: 185135009}
@@ -179,6 +183,10 @@ PrefabInstance:
       propertyPath: gameLevels.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4114515048702934897, guid: dd1d7d9a7c3d5e54ebf3070eadda33b2, type: 3}
+      propertyPath: 'gameLevels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: af3c82a1222bb4943ae6bc383e590bf1, type: 2}
     - target: {fileID: 5177086229816066667, guid: dd1d7d9a7c3d5e54ebf3070eadda33b2, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -1384,6 +1392,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     config: {fileID: 11400000, guid: c6c52bdca8c79db448982033f852c0c6, type: 2}
+--- !u!114 &1443821877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2609239342903453100, guid: 6ed2ecadd35ee8740a4d93035abc6d61, type: 3}
+  m_PrefabInstance: {fileID: 2103179392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443821872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88ddc2e7a9c4a1a8e7186eea1d07a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1465606284 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7806269018729246584, guid: 2cfa904642675d64ba0dab172e559548, type: 3}
@@ -1518,12 +1537,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ca2b1b35f6460b8977f22f77e4ae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePool: []
+  upgradePool:
+  - {fileID: 11400000, guid: 25a1a10dc2116574ca5eedde9a87d487, type: 2}
+  - {fileID: 11400000, guid: 25a1a10dc2116574ca5eedde9a87d487, type: 2}
+  - {fileID: 11400000, guid: 25a1a10dc2116574ca5eedde9a87d487, type: 2}
   numberOfOptions: 3
-  upgradeSelectionPanel: {fileID: 0}
-  upgradeButtonsContainer: {fileID: 0}
-  upgradeButtonPrefab: {fileID: 0}
-  playerUpgradeInventory: {fileID: 0}
+  upgradeSelectionPanel: {fileID: 2078378128}
+  upgradeButtonsContainer: {fileID: 1404569631}
+  upgradeButtonPrefab: {fileID: 4711558021472666307, guid: 1bd7615f9d2b5414c8bb4641406aa467, type: 3}
+  playerUpgradeInventory: {fileID: 1443821877}
 --- !u!1 &1630379200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +1814,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 65583447731881222, guid: 2cfa904642675d64ba0dab172e559548, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 633254949278804818, guid: 2cfa904642675d64ba0dab172e559548, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
