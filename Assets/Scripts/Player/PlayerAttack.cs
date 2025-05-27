@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     
     private void Start()
     {
-        //SetLoadout(PlayerData.Instance.Loadout);
+        SetLoadout(PlayerData.Instance.Loadout);
     }
 
     
